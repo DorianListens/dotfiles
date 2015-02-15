@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/Dorian/infoactive/.git/rr-cache/0c8cf6644b6fd8bdf5dbc1f69cb94df72aa9c69e'
+let g:netrw_dirhist_2='/Users/Dorian/infoactive'
+let g:netrw_dirhist_3='/Users/Dorian/.vim'
+let g:netrw_dirhist_4='/Users/Dorian/.git'

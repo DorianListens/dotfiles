@@ -1,0 +1,38 @@
+[user]
+	name = Dorian
+	email = dorian.scheidt@gmail.com
+[alias]
+	co = checkout
+  b = branch
+	s = status -s
+  st = "!git fetch && git status"
+  ci = commit --verbose
+  di = diff
+  dc = diff --cached
+  amend = commit --amend
+  aa = add --all
+  noff = merge --no-ff
+  fa = fetch --all
+  #Logging
+	lg = log --oneline --decorate --graph
+  head = !git r -1
+  h = !git head
+  hp = "!. ~/.githelpers && show_git_head"
+  r = !GIT_NO_PAGER=1 git l -30
+  ra = !git r --all
+  l = "!. ~/.githelpers && pretty_git_log"
+  la = !git l --all
+[core]
+	editor = vim
+	autocrlf = input
+[credential]
+	helper = osxkeychain
+[color]
+	ui = true
+[push]
+	default = simple
+[pull]
+	default = simple
+	rebase = true
+[mergetool]
+	keepBackup = false
