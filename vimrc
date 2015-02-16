@@ -13,6 +13,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " Switch between last two files
 nnoremap <leader><leader> <c-^> 
 set showcmd
+set showmatch
 " Searching
 set ignorecase smartcase
 set hlsearch
@@ -47,7 +48,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'adrianolaru/vim-adio'
 Plugin 'git://github.com/tpope/vim-commentary'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 
 " Basic Display Settings
@@ -56,7 +57,10 @@ set number	" Show line numbers
 syntax enable	" Use syntax highlighting
 set background=dark
 colorscheme adio
+" highlight the cursorline, which adio doesn't do.
+hi CursorLine       ctermfg=none ctermbg=234 cterm=none
 set cursorline
+set wildmenu
 set enc=utf-8
 set splitbelow
 set splitright
