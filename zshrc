@@ -15,7 +15,7 @@ ZSH_THEME="robbyrussell"
 alias 'git status'='git fetch && git status'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vi=vim
-alias worknow='bash ~/tmuxwork.sh'
+alias worknow='bash ~/.tmuxwork.sh'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
