@@ -162,11 +162,16 @@ nnoremap <Down> :echoe "NO! Use j"<CR>
 :let dir=fnamemodify(getcwd(), ':t')
 :let sessiondir=$HOME.'/.vim/sessions/'.dir.'/'
 :let sessionpath=sessiondir.'session.vim'
-:let restorestring=' <ESC>:mksession! '. sessionpath . '<CR>:wqa<CR>'
-if !isdirectory(sessiondir)
-  silent call mkdir (sessiondir, 'p')
-endif
-execute "nmap SQ" . restorestring
+:let restorestring=':mksession! '. sessionpath 
+" execute "nmap SQ" . restorestring
+nmap SQ :call MakeSession(sessiondir, restorestring)<cr>
+function! MakeSession(sessiondir, restorestring)
+  if !isdirectory(a:sessiondir)
+    silent call mkdir (a:sessiondir, 'p')
+  endif
+  execute a:restorestring
+  exec 'wqa'
+endfunction
 function! RestoreSession(sessionpath)
   if argc() == 0 "vim called without arguments
     if filereadable(a:sessionpath)
