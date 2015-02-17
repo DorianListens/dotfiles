@@ -1,6 +1,6 @@
 #!/bin/bash
 SESSION="infoactive"
-DIR="infoactive"
+DIR="~/infoactive"
 
 tmux -2 new-session -d -s $SESSION
 
