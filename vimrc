@@ -19,6 +19,7 @@ set showmatch
 set ignorecase smartcase
 set hlsearch
 set incsearch
+set t_ti= t_te=
 " Clear syntax highlighting with enter
 nnoremap <CR> :nohlsearch<CR><CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'

@@ -27,6 +27,7 @@ tmux send-keys "cd " $DIR  C-m
 tmux send-keys "rake jobs:work" C-m
 tmux select-pane -t 3
 tmux send-keys "cd " $DIR  C-m
+tmux send-keys "guard" C-m
 tmux select-pane -t 1
 
 tmux select-window -t $SESSION:1
