@@ -137,7 +137,7 @@ virtualenv_currentenv(){
   fi
 }
 
-export PROMPT=$'\n@%m:$(directory_name) $(virtualenv_currentenv)$(git_dirty)$(need_push)\n$ '
+export PROMPT=$'\n@%m:$(directory_name) $(virtualenv_currentenv)$(git_dirty)$(need_push)\n%{$fg_bold[green]%}⟿  '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
