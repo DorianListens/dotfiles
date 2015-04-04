@@ -2,7 +2,7 @@
 SESSION="infoactive"
 DIR="~/infoactive"
 
-tmux -2 new-session -d -s $SESSION
+tmux -2 new-session -d -s "$SESSION"
 
 # Editor Window
 tmux send-keys "cd " $DIR C-m
