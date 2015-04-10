@@ -77,19 +77,13 @@ set winwidth=84
 " fail.
 set winheight=5
 set winminheight=5
-set winheight=999
+:silent! set winheight=999
 "if a file is changed outside of vim, automatically reload it without asking
 set autoread
 let g:gitgutter_realtime = 1
 let g:gitgutter_sign_column_always = 1
 filetype plugin indent on " Required
 
-
-" Quicker window movement
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
