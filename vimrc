@@ -59,7 +59,7 @@ Plugin 'rking/ag.vim'
 
 " Basic Display Settings
 set ruler
-" set number	" Show line numbers
+set number	" Show line numbers
 set relativenumber
 syntax enable	" Use syntax highlighting
 set background=dark
