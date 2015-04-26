@@ -10,6 +10,7 @@ tmux send-keys "vi" C-m
 tmux split-window -v
 tmux resize-pane -D 15
 tmux send-keys "cd "  $DIR C-m
+tmux send-keys "ulimit -n 300" C-m
 tmux send-keys "karma start" C-m
 tmux split-window -h
 tmux send-keys "cd " $DIR C-m

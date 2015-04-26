@@ -66,6 +66,7 @@ set background=dark
 colorscheme adio
 " highlight the cursorline, which adio doesn't do.
 hi CursorLine       ctermfg=none ctermbg=234 cterm=none
+hi LineNr           ctermfg=243  ctermbg=233  cterm=none
 set cursorline
 set wildmenu
 set enc=utf-8
