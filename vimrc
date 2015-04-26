@@ -56,6 +56,7 @@ Plugin 'git://github.com/tpope/vim-commentary'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-surround'
 
 " Basic Display Settings
 set ruler
