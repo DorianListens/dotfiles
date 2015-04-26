@@ -74,12 +74,12 @@ set enc=utf-8
 set splitbelow
 set splitright
 " Window Size
-set winwidth=84
+:silent! set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
-set winheight=5
-set winminheight=5
+:silent! set winheight=5
+:silent! set winminheight=5
 :silent! set winheight=999
 "if a file is changed outside of vim, automatically reload it without asking
 set autoread
