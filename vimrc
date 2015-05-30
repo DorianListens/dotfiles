@@ -8,7 +8,6 @@ set shiftwidth=2
 " Basic Keymappings
 let mapleader = " "
 imap <c-c> <esc>
-set clipboard=unnamed
 " Get current file path upto directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " Switch between last two files
@@ -57,6 +56,10 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'jgdavey/tslime.vim'
+
 
 " Basic Display Settings
 set ruler
@@ -116,48 +119,13 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Selecta Mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Run a given vim command on the results of fuzzy selecting from a given
-" shell
-" command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-   try
-     let selection = system(a:choice_command . " | selecta " .  a:selecta_args)
-   catch /Vim:Interrupt/
-" Swallow the ^C so that the redraw below happens; otherwise
-"there will be
-" leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
-function! SelectaFile(path)
-  call SelectaCommand("find " . a:path . "/* -type f", "", ":e")
-endfunction
-
-" nnoremap <leader>f :call SelectaFile(".")<cr>
-nnoremap <leader>gv :call SelectaFile("app/views")<cr>
-nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
-nnoremap <leader>gm :call SelectaFile("app/models")<cr>
-nnoremap <leader>gh :call SelectaFile("app/helpers")<cr>
-nnoremap <leader>gl :call SelectaFile("lib")<cr>
-nnoremap <leader>gp :call SelectaFile("public")<cr>
-nnoremap <leader>gs :call SelectaFile("public/stylesheets")<cr>
-nnoremap <leader>gf :call SelectaFile("features")<cr>
-
-function! SelectaIdentifier()
-" Yank the word under the cursor into the z register
-  normal "zyiw
-" Fuzzy match files in the current directory, starting with the word  under
-" the cursor
-  call SelectaCommand("find * -type f", "-s " . @z, ":e")
-endfunction
-nnoremap <c-g> :call SelectaIdentifier()<cr>
+let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
 
 
 " You Will Learn...

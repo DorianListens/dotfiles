@@ -30,7 +30,7 @@
 [color]
 	ui = true
 [push]
-	default = simple
+	default = current
 [pull]
 	default = simple
 	rebase = true
