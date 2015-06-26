@@ -148,3 +148,9 @@ precmd() {
 }
 
 export PATH=$PATH:$HOME/.bin
+
+# added by travis gem
+[ -f /Users/Dorian/.travis/travis.sh ] && source /Users/Dorian/.travis/travis.sh
+eval "$(direnv hook zsh)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
