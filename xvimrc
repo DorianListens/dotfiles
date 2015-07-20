@@ -1,0 +1,17 @@
+" Dorian's XVimrc
+set relativenumber
+set number
+" Get current file path upto directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" Switch between last two files
+set showcmd
+set showmatch
+
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+" Clear syntax highlighting with enter
+nnoremap <CR> :nohlsearch<CR><CR>
+set cursorline
+set wildmenu

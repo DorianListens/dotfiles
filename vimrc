@@ -60,6 +60,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'jgdavey/tslime.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'
 
 
 " Basic Display Settings
