@@ -15,3 +15,8 @@ set incsearch
 nnoremap <CR> :nohlsearch<CR><CR>
 set cursorline
 set wildmenu
+
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
