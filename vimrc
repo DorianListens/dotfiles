@@ -43,8 +43,8 @@ endif
 
 
 " Vundle Plugins
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 Plugin 'gmarik/vundle'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -61,7 +61,11 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'jgdavey/tslime.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
+Plugin 'keith/swift.vim'
+Plugin 'msanders/cocoa.vim'
+Plugin 'eraserhd/vim-ios'
 
+call vundle#end()
 
 " Basic Display Settings
 set ruler
