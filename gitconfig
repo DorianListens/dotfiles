@@ -1,5 +1,4 @@
 [user]
-	name = Dorian
 	email = dscheidt@tableau.com
 	name = Dorian Scheidt
 [alias]
@@ -24,7 +23,7 @@
   l = "!. ~/.githelpers && pretty_git_log"
   la = !git l --all
 [core]
-	editor = vim
+	editor = /Applications/MacVim.app/Contents/MacOS/Vim
 	autocrlf = input
 [credential]
 	helper = osxkeychain
