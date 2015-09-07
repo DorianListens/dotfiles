@@ -26,7 +26,8 @@ set t_ti= t_te=
 " Clear syntax highlighting with enter
 nnoremap <CR> :nohlsearch<CR><CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
-nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>f :FZF<CR>
+let g:fzf_layout = { 'down': '40%' }
 nnoremap <leader>sc :Ag --coffee 
 nnoremap <leader>sr :Ag --ruby 
 nnoremap <leader>sa :Ag --sass 
@@ -44,9 +45,11 @@ endif
 
 " Vundle Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
 call vundle#begin()
 
 Plugin 'gmarik/vundle'
+Plugin 'junegunn/fzf.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'airblade/vim-gitgutter'
