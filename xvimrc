@@ -12,6 +12,7 @@ set hlsearch
 set incsearch
 " Clear syntax highlighting with enter
 nnoremap <CR> :nohlsearch<CR><CR>
+
 set cursorline
 
 noremap <C-l> <C-w>l

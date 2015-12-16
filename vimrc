@@ -67,6 +67,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'keith/swift.vim'
 Plugin 'msanders/cocoa.vim'
 Plugin 'eraserhd/vim-ios'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
