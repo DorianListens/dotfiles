@@ -1,48 +1,10 @@
 set nocompatible
-filetype off    " Required
-" Spacing and Indentation
-set tabstop=2
-set expandtab 
-set softtabstop=2
-set shiftwidth=2
-set mouse=a
-" Basic Keymappings
-let mapleader = " "
-imap <c-c> <esc>
-" Get current file path upto directory
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-" Switch between last two files
-nnoremap <leader><leader> <c-^> 
-set showcmd
-set showmatch
+" Set this to off before setting up plugins to prevent runtimepath issues
+filetype off
 
-" This makes RVM work inside Vim. I have no idea why.
-set shell=bash
-
-" Searching
-set ignorecase smartcase
-set hlsearch
-set incsearch
-set t_ti= t_te=
-" Clear syntax highlighting with enter
-nnoremap <CR> :nohlsearch<CR><CR>
-
-nnoremap <leader>f :FZF<CR>
-let g:fzf_layout = { 'down': '40%' }
-
-nnoremap <leader>sc :Ag --coffee 
-nnoremap <leader>sr :Ag --ruby 
-nnoremap <leader>sa :Ag --sass 
-
-cnoremap fix :!echo -e '\ec\e(K\e[J'
-if executable('rg')
-  " Use rg over Grep
-  set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case
-  set grepformat=%f:%l:%c:%m
-  let g:ackprg ='rg --vimgrep --no-heading'
-endif
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -61,25 +23,77 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
 
+" This call automatically re-enables filetype and enables syntax highlighting
 call plug#end()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Spacing and Indentation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tabstop=2
+set expandtab 
+set softtabstop=2
+set shiftwidth=2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic Keymappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a
+let mapleader = " "
+imap <c-c> <esc>
+" Get current file path upto directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" Switch between last two files
+nnoremap <leader><leader> <c-^> 
+
+" You Will Learn...
+nnoremap <Left> :echoe "NO! Use h"<CR>
+nnoremap <Right> :echoe "NO! Use l"<CR>
+nnoremap <Up> :echoe "NO! Use k"<CR>
+nnoremap <Down> :echoe "NO! Use j"<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Searching
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set ignorecase smartcase
+set hlsearch
+set incsearch
+set t_ti= t_te=
+" Clear syntax highlighting with enter
+nnoremap <CR> :nohlsearch<CR><CR>
+
+nnoremap <leader>f :FZF<CR>
+let g:fzf_layout = { 'down': '40%' }
+
+nnoremap <leader>sc :Ag --coffee 
+nnoremap <leader>sr :Ag --ruby 
+nnoremap <leader>sa :Ag --sass 
+
+if executable('rg')
+  " Use rg over Grep
+  set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case
+  set grepformat=%f:%l:%c:%m
+  let g:ackprg ='rg --vimgrep --no-heading'
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic Display Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable	" Use syntax highlighting
 set ruler
 set number	" Show line numbers
 set relativenumber
-syntax enable	" Use syntax highlighting
-set background=dark
-colorscheme adio
-" highlight the cursorline, which adio doesn't do.
-hi CursorLine       ctermfg=none ctermbg=234 cterm=none
-hi LineNr           ctermfg=243  ctermbg=233  cterm=none
-hi Visual           ctermfg=none ctermbg=236  cterm=none
-set cursorline
+set showcmd
+set showmatch
 set wildmenu
 set enc=utf-8
 set splitbelow
 set splitright
-" Window Size
+set signcolumn=yes
+"if a file is changed outside of vim, automatically reload it without asking
+set autoread
+let g:gitgutter_realtime = 1
+
+" Automatic Window Size
 :silent! set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
@@ -87,12 +101,19 @@ set splitright
 :silent! set winheight=5
 :silent! set winminheight=5
 :silent! set winheight=999
-"if a file is changed outside of vim, automatically reload it without asking
-set autoread
-let g:gitgutter_realtime = 1
-set signcolumn=yes
 
-filetype plugin indent on " Required
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Color Scheme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+colorscheme adio
+
+" highlight the cursorline, which adio doesn't do.
+hi CursorLine       ctermfg=none ctermbg=234 cterm=none
+hi LineNr           ctermfg=243  ctermbg=233  cterm=none
+hi Visual           ctermfg=none ctermbg=236  cterm=none
+set cursorline
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -108,9 +129,10 @@ function! InsertTabWrapper()
 endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
- """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'), 'file')
@@ -122,19 +144,17 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-" You Will Learn...
-nnoremap <Left> :echoe "NO! Use h"<CR>
-nnoremap <Right> :echoe "NO! Use l"<CR>
-nnoremap <Up> :echoe "NO! Use k"<CR>
-nnoremap <Down> :echoe "NO! Use j"<CR>
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sessions
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :let dir=fnamemodify(getcwd(), ':t')
 :let sessiondir=$HOME.'/.vim/sessions/'.dir.'/'
 :let sessionpath=sessiondir.'session.vim'
 :let restorestring=':mksession! '. sessionpath 
+
 " execute "nmap SQ" . restorestring
 nmap SQ :call MakeSession(sessiondir, restorestring)<cr>
+
 function! MakeSession(sessiondir, restorestring)
   if !isdirectory(a:sessiondir)
     silent call mkdir (a:sessiondir, 'p')
@@ -142,6 +162,7 @@ function! MakeSession(sessiondir, restorestring)
   execute a:restorestring
   exec 'wqa'
 endfunction
+
 function! RestoreSession(sessionpath)
   if argc() == 0 "vim called without arguments
     if filereadable(a:sessionpath)
@@ -150,7 +171,10 @@ function! RestoreSession(sessionpath)
   end
 endfunction
 autocmd VimEnter * call RestoreSession(sessionpath)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Window Swapping
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! MarkWindowSwap()
     let g:markedWinNum = winnr()
 endfunction
@@ -172,6 +196,10 @@ endfunction
 
 nnoremap <silent> <leader>mw :call MarkWindowSwap()<CR>
 nnoremap <silent> <leader>pw :call DoWindowSwap()<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clear all buffers
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Wipeout()
   " list of *all* buffer numbers
   let l:buffers = range(1, bufnr('$'))
@@ -204,3 +232,14 @@ function! Wipeout()
     execute 'tabnext' l:currentTab
   endtry
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Junk Drawer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This makes RVM work inside Vim. I have no idea why.
+set shell=bash
+
+" Sometimes when searching for things, the display encoding gets messed up
+" if that happens, type :fix
+cnoremap fix :!echo -e '\ec\e(K\e[J'
+
