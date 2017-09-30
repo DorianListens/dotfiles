@@ -22,6 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'keith/tmux.vim'
 
 " This call automatically re-enables filetype and enables syntax highlighting
 call plug#end()
