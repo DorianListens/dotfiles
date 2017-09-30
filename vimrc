@@ -5,6 +5,7 @@ set tabstop=2
 set expandtab 
 set softtabstop=2
 set shiftwidth=2
+set mouse=a
 " Basic Keymappings
 let mapleader = " "
 imap <c-c> <esc>
@@ -25,51 +26,42 @@ set incsearch
 set t_ti= t_te=
 " Clear syntax highlighting with enter
 nnoremap <CR> :nohlsearch<CR><CR>
-let g:ackprg = 'ag --nogroup --nocolor --column'
+
 nnoremap <leader>f :FZF<CR>
 let g:fzf_layout = { 'down': '40%' }
+
 nnoremap <leader>sc :Ag --coffee 
 nnoremap <leader>sr :Ag --ruby 
 nnoremap <leader>sa :Ag --sass 
 
 cnoremap fix :!echo -e '\ec\e(K\e[J'
-if executable('ag')
-  " Use Ag over Grep
-   set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " ag is fast enough that CtrlP doesn't need to cache
-   let g:ctrlp_use_caching = 0
+if executable('rg')
+  " Use rg over Grep
+  set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case
+  set grepformat=%f:%l:%c:%m
+  let g:ackprg ='rg --vimgrep --no-heading'
 endif
 
+" Plugins
+call plug#begin('~/.vim/plugged')
 
-" Vundle Plugins
-set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.fzf
-call vundle#begin()
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'kchmck/vim-coffee-script'
+Plug 'airblade/vim-gitgutter'
+Plug 'adrianolaru/vim-adio'
+Plug 'tpope/vim-commentary'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-surround'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'jgdavey/tslime.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rust-lang/rust.vim'
+Plug 'leafgarland/typescript-vim'
 
-Plugin 'gmarik/vundle'
-Plugin 'junegunn/fzf.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'adrianolaru/vim-adio'
-Plugin 'git://github.com/tpope/vim-commentary'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'rking/ag.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'jgdavey/tslime.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-fugitive'
-Plugin 'keith/swift.vim'
-Plugin 'msanders/cocoa.vim'
-Plugin 'eraserhd/vim-ios'
-Plugin 'rust-lang/rust.vim'
-
-call vundle#end()
+call plug#end()
 
 " Basic Display Settings
 set ruler
@@ -98,7 +90,8 @@ set splitright
 "if a file is changed outside of vim, automatically reload it without asking
 set autoread
 let g:gitgutter_realtime = 1
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
+
 filetype plugin indent on " Required
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -128,15 +121,6 @@ function! RenameFile()
   endif
 endfunction
 map <leader>n :call RenameFile()<cr>
-
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
-let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
-
 
 " You Will Learn...
 nnoremap <Left> :echoe "NO! Use h"<CR>

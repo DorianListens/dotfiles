@@ -25,6 +25,7 @@
 [core]
 	editor = /Applications/MacVim.app/Contents/MacOS/Vim
 	autocrlf = input
+	excludesfile = ~/.gitignore
 [credential]
 	helper = osxkeychain
 [color]

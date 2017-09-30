@@ -12,9 +12,7 @@ ZSH_THEME="robbyrussell"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias git=hub
-alias 'git status'='git fetch && git status'
 alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vi=vim
 alias worknow='bash ~/.tmuxwork.sh'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -147,8 +145,8 @@ precmd() {
   set_prompt
 }
 
-export PATH=$PATH:$HOME/.bin
-
+export PATH=$PATH:$HOME/.bin:$HOME/.cargo/bin
+export RUST_SRC_PATH=/usr/local/rustc-1.13.0/src
 # added by travis gem
 [ -f /Users/Dorian/.travis/travis.sh ] && source /Users/Dorian/.travis/travis.sh
 eval "$(direnv hook zsh)"
@@ -156,3 +154,5 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$PATH"
