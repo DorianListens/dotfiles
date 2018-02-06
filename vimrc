@@ -1,7 +1,4 @@
 set nocompatible
-" Set this to off before setting up plugins to prevent runtimepath issues
-filetype off
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
