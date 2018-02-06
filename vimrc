@@ -7,8 +7,7 @@ filetype off
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'kchmck/vim-coffee-script'
 Plug 'airblade/vim-gitgutter'
@@ -23,6 +22,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'keith/tmux.vim'
+Plug 'mileszs/ack.vim'
+Plug 'wavded/vim-stylus'
 
 " This call automatically re-enables filetype and enables syntax highlighting
 call plug#end()
@@ -63,17 +64,15 @@ set t_ti= t_te=
 " Clear syntax highlighting with enter
 nnoremap <CR> :nohlsearch<CR><CR>
 
-nnoremap <leader>f :FZF<CR>
-let g:fzf_layout = { 'down': '40%' }
-
-nnoremap <leader>sc :Ag --coffee 
-nnoremap <leader>sr :Ag --ruby 
-nnoremap <leader>sa :Ag --sass 
+nnoremap <leader>f :CtrlP<CR>
 
 if executable('rg')
   " Use rg over Grep
   set grepprg=rg\ --no-heading\ --vimgrep\ --smart-case
   set grepformat=%f:%l:%c:%m
+  let g:ctrlp_user_command = 'rg %s -l -g "" --files'
+  " rg is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
   let g:ackprg ='rg --vimgrep --no-heading'
 endif
 
