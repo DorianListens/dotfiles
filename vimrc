@@ -26,8 +26,8 @@ set t_ti= t_te=
 " Clear syntax highlighting with enter
 nnoremap <CR> :nohlsearch<CR><CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
-nnoremap <leader>f :FZF<CR>
-let g:fzf_layout = { 'down': '40%' }
+nnoremap <leader>f :CtrlP<CR>
+"let g:fzf_layout = { 'down': '40%' }
 nnoremap <leader>sc :Ag --coffee 
 nnoremap <leader>sr :Ag --ruby 
 nnoremap <leader>sa :Ag --sass 
@@ -45,7 +45,7 @@ endif
 
 " Vundle Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 
 Plugin 'gmarik/vundle'
@@ -54,7 +54,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'adrianolaru/vim-adio'
-Plugin 'git://github.com/tpope/vim-commentary'
+Plugin 'tpope/vim-commentary'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rking/ag.vim'
@@ -65,9 +65,9 @@ Plugin 'jgdavey/tslime.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'keith/swift.vim'
-Plugin 'msanders/cocoa.vim'
-Plugin 'eraserhd/vim-ios'
 Plugin 'rust-lang/rust.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'wavded/vim-stylus'
 
 call vundle#end()
 
@@ -98,7 +98,6 @@ set splitright
 "if a file is changed outside of vim, automatically reload it without asking
 set autoread
 let g:gitgutter_realtime = 1
-let g:gitgutter_sign_column_always = 1
 filetype plugin indent on " Required
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -135,7 +134,7 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec} --color \n")'
 
 
 " You Will Learn...

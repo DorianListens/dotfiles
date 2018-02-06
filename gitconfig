@@ -1,5 +1,5 @@
 [user]
-	email = dorian.scheidt@gmail.com
+	email = dscheidt@tableau.com
 	name = Dorian Scheidt
 [alias]
 	co = checkout
@@ -25,6 +25,7 @@
 [core]
 	editor = /Applications/MacVim.app/Contents/MacOS/Vim
 	autocrlf = input
+	excludesfile = /Users/dscheidt/.gitignore_global
 [credential]
 	helper = osxkeychain
 [color]
@@ -36,3 +37,11 @@
 	rebase = true
 [mergetool]
 	keepBackup = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[merge]
+	tool = opendiff
