@@ -22,6 +22,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'keith/tmux.vim'
 Plug 'mileszs/ack.vim'
 Plug 'wavded/vim-stylus'
+Plug 'uarun/vim-protobuf'
 
 " This call automatically re-enables filetype and enables syntax highlighting
 call plug#end()
