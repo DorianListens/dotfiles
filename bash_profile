@@ -1,13 +1,25 @@
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+
+if [ -x "$(command -v brew)" ]; then
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+      . `brew --prefix`/etc/bash_completion
+    fi
 fi
 
 export PATH="~/.bin:$PATH"
-alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
-alias vi=vim
+
+if [ -d "/Applications" ]; then
+  alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+  alias vi=vim
+fi
+
+if [ -d "$HOME/.local/vim/bin/" ] ; then
+  PATH="$HOME/.local/vim/bin/:$PATH"
+  export DISPLAY=:100
+fi
+
 alias gclean='git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d'
 
 parse_git_branch() {

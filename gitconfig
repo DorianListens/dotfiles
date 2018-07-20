@@ -23,7 +23,7 @@
   l = "!. ~/.githelpers && pretty_git_log"
   la = !git l --all
 [core]
-	editor = /Applications/MacVim.app/Contents/MacOS/Vim
+	editor = vim
 	autocrlf = input
 	excludesfile = /Users/dscheidt/.gitignore_global
 [credential]
