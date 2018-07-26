@@ -1,0 +1,10 @@
+#!/bin/sh
+
+/Applications/Xpra.app/Contents/MacOS/Xpra \
+  --desktop-scaling=1 \
+  --opengl=no \
+  --encoding=png/P \
+  --dpi=96 \
+  --swap-keys=no \
+  --debug=keyboard,scroll \
+  attach ssh:${USER}@${USER}-lx:100
